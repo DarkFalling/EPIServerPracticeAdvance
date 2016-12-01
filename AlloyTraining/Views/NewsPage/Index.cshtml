@@ -1,11 +1,8 @@
 ﻿@using EPiServer.Core
-
 @model AlloyTraining.Models.ViewModels.NewsPageViewModel
-
 @{
     Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
 }
-
 <h1>
     @Html.PropertyFor(m => m.CurrentPage.PageName)
 </h1>
@@ -18,23 +15,26 @@
         @Html.PropertyFor(m => m.CurrentPage.MainListing)
     </div>
 </div>
-@if (!ContentReference.IsNullOrEmpty(Model.CurrentPage.CommentFolder))
+@if (Model.CommentFolderIsSet)
 {
     <h3>@Html.Translate("/postedcomment/listheading")</h3>
     foreach (var c in Model.CommentList)
     {
         Html.RenderPartial("PostedComment", c);
     }
-    @*//In a real project you would probably use a partial view here for the form.*@
-using (Html.BeginForm("Create", null, FormMethod.Post))
-{
-    <fieldset>
-        <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
-        @Html.Label("Your Name")
-        @Html.TextBox("CommentatorName")
-        @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
-        @Html.TextArea("Text")
-        <input type="submit" value="@Html.Translate("/postedcomment/form/submitbutton")" />
-    </fieldset>
+    if (Model.HasCommentPublishAccess)
+    {
+        @*//In a real project you would probably use a partial view here for the form.*@
+        using (Html.BeginForm("Create", null, FormMethod.Post))
+        {
+            <fieldset>
+                <legend>@Html.Translate("/postedcomment/form/fieldsetlegend")</legend>
+                @Html.Label("Your Name")
+                @Html.TextBox("CommentatorName")
+                @Html.Label(@Html.Translate("/postedcomment/form/commenttextlabel"))
+                @Html.TextArea("Text")
+                <input type="submit" value="@Html.Translate("/postedcomment/form/submitbutton")" />
+            </fieldset>
+        }
     }
 }

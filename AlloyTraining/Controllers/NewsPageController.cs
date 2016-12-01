@@ -21,7 +21,9 @@ namespace AlloyTraining.Controllers
              * you can pass the page type for simpler templates */
             NewsPageViewModel model = new NewsPageViewModel(currentPage)
             {
-                CommentList = handler.LoadComments(currentPage.CommentFolder)
+                CommentList = handler.LoadComments(currentPage.CommentFolder),
+                HasCommentPublishAccess = handler.CurrentUserHasCommentPublishAccess(currentPage.CommentFolder),
+                CommentFolderIsSet = handler.CommentFolderIsSet(currentPage.CommentFolder)
             };
 
             return View(model);

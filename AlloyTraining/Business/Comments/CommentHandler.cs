@@ -52,5 +52,22 @@ namespace AlloyTraining.Business.Comments
 
             return newCommentFolder;
         }
+
+        public bool CurrentUserHasCommentPublishAccess(ContentReference commentFolderReference)
+        {
+            if (ContentReference.IsNullOrEmpty(commentFolderReference))
+                return false;
+
+            IContent commentFolder = _contentRepository.Get<ContentFolder>(commentFolderReference);
+            if (commentFolder == null)
+                return false;
+
+            return commentFolder.QueryDistinctAccess(EPiServer.Security.AccessLevel.Publish);
+        }
+
+        public bool CommentFolderIsSet(ContentReference commentFolderReference)
+        {
+            return !ContentReference.IsNullOrEmpty(commentFolderReference);
+        }
     }
 }
