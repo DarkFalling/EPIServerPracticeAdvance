@@ -1,0 +1,24 @@
+﻿@model AlloyTraining.Models.ViewModels.DefaultPageViewModel<AlloyTraining.Models.Pages.FAQPage>
+
+<h2>ALLOY FAQ PAGE</h2>
+<hr />
+
+<div class="navbar">
+    <h3>Enter A Question!</h3>
+    @using (Html.BeginForm("Submit", null, null, FormMethod.Get))
+    {
+        <input type="text" tabindex="1" name="question" value="" />
+        <input type="submit" tabindex="2" class="btn" value="Submit" />
+    }
+
+</div>
+
+<div class="nav-stacked">
+    <h2>FAQ LIST</h2>
+    @foreach (var faqItem in Model.CurrentPage.FAQItems)
+    {
+        <h3>@faqItem.Question</h3>
+        <p>@faqItem.Answer</p>
+        <hr />
+    }
+</div>

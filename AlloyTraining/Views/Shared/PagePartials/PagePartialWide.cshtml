@@ -1,0 +1,25 @@
+﻿@using EPiServer.Core
+@model AlloyTraining.Models.Pages.SitePageData
+<div class="block span8">
+    @if (Model.HasTemplate())
+    {
+        <div class="border">
+            <div class="media">
+                <div class="mediaImg">
+                    <img src="@Url.ContentUrl(Model.PageImage)" />
+                </div>
+                <a href="@Url.PageUrl(Model.LinkURL)">
+                    <h2>@Model.PageName</h2>
+                    <p>@Html.PropertyFor(x => x.TeaserText)</p>
+                </a>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <h2>@Model.PageName</h2>
+        <p>@Html.PropertyFor(x => x.TeaserText)</p>
+        <img src="@Url.ContentUrl(Model.PageImage)" />
+    }
+</div>

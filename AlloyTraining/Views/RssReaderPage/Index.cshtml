@@ -1,0 +1,23 @@
+﻿@model AlloyTraining.Models.ViewModels.RssReaderPageViewModel
+
+@{
+    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
+}
+
+<h1>
+    @Html.PropertyFor(x => x.CurrentPage.Heading)
+</h1>
+<div class="introduction">
+    @Html.PropertyFor(x => x.CurrentPage.DescriptiveText)
+</div>
+
+@foreach (var item in Model.RssFeed.RssItems)
+{
+    <div class="listResult">
+        <h3>
+            <a href="@item.Url" title="@item.Title">@item.Title</a>
+        </h3>
+        <p>@Html.Raw(item.Description)</p>
+        <hr />
+    </div>
+}

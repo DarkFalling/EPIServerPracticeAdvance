@@ -1,0 +1,12 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model AlloyTraining.Models.ViewModels.DefaultPageViewModel<AlloyTraining.Models.Pages.StartPage>
+
+<h1 @Html.EditAttributes(x => x.CurrentPage.Heading)>
+      @(Model.CurrentPage.Heading ?? Model.CurrentPage.PageName)
+</h1>
+<div>
+  @Html.PropertyFor(m => m.CurrentPage.MainBody)
+</div>
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new {CssClass="row equal-height", tag="span4" })

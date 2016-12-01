@@ -1,0 +1,18 @@
+﻿@using AlloyTraining.Models.Pages
+@using AlloyTraining.Models.ViewModels
+
+@{
+    Layout = "~/Views/Shared/Layouts/_Root.cshtml";
+}
+
+<div class="row">
+    <div class="span4">
+        @{  DefaultPageViewModel<SitePageData> basemodel = new DefaultPageViewModel<SitePageData>(Model.CurrentPage);
+            Html.RenderPartial("SubNavigation", basemodel);}
+
+        @RenderSection("RelatedContent", false)
+    </div>
+    <div class="span8">
+        @RenderBody()
+    </div>
+</div>

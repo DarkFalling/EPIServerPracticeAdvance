@@ -1,0 +1,18 @@
+﻿@model AlloyTraining.Models.ViewModels.DefaultPageViewModel<AlloyTraining.Models.Pages.NewsPage>
+
+@{
+    Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml";
+}
+
+<h1>
+    @Html.PropertyFor(m => m.CurrentPage.PageName)
+</h1>
+<p class="introduction">
+    @Html.PropertyFor(m => m.CurrentPage.MetaDescription)
+</p>
+<div class="row">
+    <div class="span8">
+        @Html.PropertyFor(m => m.CurrentPage.MainBody)
+        @Html.PropertyFor(m => m.CurrentPage.MainListing)
+    </div>
+</div>

@@ -1,0 +1,21 @@
+# exclude folder
+**/[Bb]in/**
+**/obj/**
+
+
+# User-specific files
+*.suo
+
+# NuGet Packages Directory
+## TODO: If you have NuGet Package Restore enabled, uncomment the next line
+packages/
+
+# c++
+**/*.sdf
+**/*.opensdf
+**/[Dd]ebug/**
+## introduced in VS2015 Update 2 to replace sdf file
+*.VC.VC.opendb
+*.VC.db
+
+*.log
