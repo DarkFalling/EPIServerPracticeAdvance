@@ -39,7 +39,17 @@
     <form>
         <postedmessage>Thank you for your post!</postedmessage>
     </form>
-
+    
+    <postedcomment>
+      <form>
+        <fieldsetlegend>What do you think? Write a comment!</fieldsetlegend>
+        <commentatornamelabel>Your name</commentatornamelabel>
+        <commenttextlabel>Comment</commenttextlabel>
+        <submitbutton>Add comment</submitbutton>
+      </form>
+      <listheading>Comments on this article</listheading>
+    </postedcomment>
+    
   </language>
   
 </languages>

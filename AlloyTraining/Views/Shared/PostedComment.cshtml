@@ -1,0 +1,13 @@
+﻿@using EPiServer.Core
+@using EPiServer.Web.Mvc.Html
+
+@model AlloyTraining.Models.Blocks.PostedComment
+
+<div class="commentpost">
+    <h4>@Html.DisplayFor(x => x.CommentatorName)</h4>
+    <div class="date">
+        @Html.DisplayFor(x => x.Date)
+    </div>
+    <p>@Html.DisplayFor(x => x.Text)</p>
+    <hr />
+</div>

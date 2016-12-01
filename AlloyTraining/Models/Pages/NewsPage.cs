@@ -5,6 +5,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.SpecializedProperties;
 using AlloyTraining.Models.Blocks;
+using EPiServer.Web;
 
 namespace AlloyTraining.Models.Pages
 {
@@ -19,5 +20,12 @@ namespace AlloyTraining.Models.Pages
             Order = 315)]
         public virtual ListingBlock MainListing { get; set; }
 
+        [UIHint(UIHint.BlockFolder)]
+        [Display(
+            Name = "Comment folder",
+            Description = "Folder used as root for comments. If not set, comment function will be disabled",
+            GroupName = SystemTabNames.Settings,
+            Order = 500)]
+        public virtual ContentReference CommentFolder { get; set; }
     }
 }

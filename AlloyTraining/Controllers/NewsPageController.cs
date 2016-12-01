@@ -7,6 +7,8 @@ using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
 using AlloyTraining.Models.Pages;
 using AlloyTraining.Models.ViewModels;
+using System;
+using AlloyTraining.Business.Comments;
 
 namespace AlloyTraining.Controllers
 {
@@ -15,10 +17,26 @@ namespace AlloyTraining.Controllers
         [ContentOutputCache]
         public ActionResult Index(NewsPage currentPage)
         {
-             /* Implementation of action. You can create your own view model class that you pass to the view or
+            /* Implementation of action. You can create your own view model class that you pass to the view or
              * you can pass the page type for simpler templates */
-            DefaultPageViewModel<NewsPage> model = new DefaultPageViewModel<NewsPage>(currentPage);
+            NewsPageViewModel model = new NewsPageViewModel(currentPage)
+            {
+                CommentList = handler.LoadComments(currentPage.CommentFolder)
+            };
+
             return View(model);
+        }
+        private CommentHandler handler;
+        public NewsPageController(CommentHandler handler)
+        {
+            this.handler = handler;
+        }
+
+        [HttpPost]
+        public ActionResult Create(NewsPage currentPage, string commentatorName, string text)
+        {
+            handler.AddComment(currentPage.CommentFolder, commentatorName, text, DateTime.Now);
+            return RedirectToAction("Index");
         }
     }
 }
