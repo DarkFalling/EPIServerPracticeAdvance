@@ -4,6 +4,7 @@ using EPiServer;
 using EPiServer.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AlloyTraining.Business.Comments
 {
@@ -34,7 +35,15 @@ namespace AlloyTraining.Business.Comments
             if (ContentReference.IsNullOrEmpty(commentFolderReference))
                 return null;
 
-            return _contentRepository.GetChildren<PostedComment>(commentFolderReference);
+            var filterContentForVisitor = new EPiServer.Filters.FilterContentForVisitor(
+                EPiServer.Framework.Web.TemplateTypeCategories.MvcPartialView,
+                string.Empty);
+
+            var allComments = _contentRepository.GetChildren<IContent>(commentFolderReference).ToList<IContent>();
+
+            filterContentForVisitor.Filter(allComments);
+
+            return allComments.Cast<PostedComment>().OrderBy(comment => comment.Date);
         }
 
         public static ContentFolder AddNewCommentFolder(IContentRepository contentRepository, IContent contentItemToComment)
