@@ -279,6 +279,7 @@
     <Compile Include="Controllers\ProductPageController.cs" />
     <Compile Include="Controllers\RssReaderPageController.cs" />
     <Compile Include="Controllers\SearchPageController.cs" />
+    <Compile Include="Controllers\ShareThisBlockController.cs" />
     <Compile Include="Controllers\StandardPageController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\TeaserBlockController.cs" />
@@ -289,6 +290,7 @@
     <Compile Include="Models\Blocks\EditorialBlock.cs" />
     <Compile Include="Models\Blocks\ListingBlock.cs" />
     <Compile Include="Models\Blocks\PostedComment.cs" />
+    <Compile Include="Models\Blocks\ShareThisBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Pages\FAQItem.cs" />
@@ -311,6 +313,7 @@
     <Compile Include="Models\ViewModels\NewsPageViewModel.cs" />
     <Compile Include="Models\ViewModels\RssReaderPageViewModel.cs" />
     <Compile Include="Models\ViewModels\SearchPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShareThisBlockViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -394,6 +397,7 @@
     <Content Include="modules\_protected\EPiServer.Forms\Forms.config" />
     <Content Include="modules\_protected\EPiServer.Forms\EPiServer.Forms.zip" />
     <Content Include="Views\Shared\PostedComment.cshtml" />
+    <Content Include="Views\ShareThisBlock\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
