@@ -3,10 +3,15 @@
 
 @model AlloyTraining.Models.Blocks.PostedComment
 
+@{ ContentReference currentCommentRef = ((IContent)Model).ContentLink; }
 <div class="commentpost">
     <h4>@Html.DisplayFor(x => x.CommentatorName)</h4>
     <div class="date">
         @Html.DisplayFor(x => x.Date)
+        &nbsp; @Html.ActionLink(
+            Html.Translate("/postedcomment/reportcommentlink"),
+            "ReportComment",
+            new { commentReference = currentCommentRef })
     </div>
     <p>@Html.DisplayFor(x => x.Text)</p>
     <hr />

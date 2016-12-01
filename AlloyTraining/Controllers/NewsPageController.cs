@@ -40,5 +40,12 @@ namespace AlloyTraining.Controllers
             handler.AddComment(currentPage.CommentFolder, commentatorName, text, DateTime.Now);
             return RedirectToAction("Index");
         }
+
+        public ActionResult ReportComment(ContentReference commentReference)
+        {
+            handler.ReportComment(commentReference);
+
+            return RedirectToAction("Index");
+        }
     }
 }

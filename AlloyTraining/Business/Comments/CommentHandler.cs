@@ -78,5 +78,21 @@ namespace AlloyTraining.Business.Comments
         {
             return !ContentReference.IsNullOrEmpty(commentFolderReference);
         }
+
+        public void ReportComment(ContentReference commentReference)
+        {
+            if (ContentReference.IsNullOrEmpty(commentReference))
+                throw new NullReferenceException();
+
+            PostedComment reportedComment = _contentRepository.Get<PostedComment>(commentReference);
+            var commentToUpdate = reportedComment.CreateWritableClone() as IVersionable;
+
+            commentToUpdate.StopPublish = DateTime.Now;
+
+            _contentRepository.Save(
+                commentToUpdate as IContent,
+                EPiServer.DataAccess.SaveAction.Publish,
+                EPiServer.Security.AccessLevel.Read);
+        }
     }
 }

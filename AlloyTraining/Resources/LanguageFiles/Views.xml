@@ -39,7 +39,7 @@
     <form>
         <postedmessage>Thank you for your post!</postedmessage>
     </form>
-    
+
     <postedcomment>
       <form>
         <fieldsetlegend>What do you think? Write a comment!</fieldsetlegend>
@@ -48,6 +48,7 @@
         <submitbutton>Add comment</submitbutton>
       </form>
       <listheading>Comments on this article</listheading>
+      <reportcommentlink>Report this comment</reportcommentlink>
     </postedcomment>
     
   </language>
