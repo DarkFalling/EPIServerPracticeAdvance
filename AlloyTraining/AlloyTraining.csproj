@@ -263,6 +263,8 @@
     <Compile Include="Business\Channels\MobileChannel.cs" />
     <Compile Include="Business\Channels\MobileResolution.cs" />
     <Compile Include="Business\Comments\CommentHandler.cs" />
+    <Compile Include="Business\Comments\CommentInitialization.cs" />
+    <Compile Include="Business\Comments\ICommentableContent.cs" />
     <Compile Include="Business\ContentExtensions.cs" />
     <Compile Include="Business\DependencyResolverInitialization.cs" />
     <Compile Include="Business\ExtensionMethods.cs" />

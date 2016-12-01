@@ -1,4 +1,5 @@
 ﻿using AlloyTraining.Models.Blocks;
+using AlloyTraining.Models.Pages;
 using EPiServer;
 using EPiServer.Core;
 using System;
@@ -12,7 +13,7 @@ namespace AlloyTraining.Business.Comments
 
         public CommentHandler(IContentRepository contentRepository)
         {
-            _contentRepository = contentRepository;           
+            _contentRepository = contentRepository;
         }
 
         public void AddComment(ContentReference commentFolderReference, string name, string text, DateTime date)
@@ -36,5 +37,20 @@ namespace AlloyTraining.Business.Comments
             return _contentRepository.GetChildren<PostedComment>(commentFolderReference);
         }
 
+        public static ContentFolder AddNewCommentFolder(IContentRepository contentRepository, IContent contentItemToComment)
+        {
+            //Why not use the local _contentRepository method? The method can't be static then though....
+            var rootFolderReference = contentRepository.Get<StartPage>(ContentReference.StartPage).CommentRoot;
+
+            if (ContentReference.IsNullOrEmpty(rootFolderReference))
+                return null;
+
+            var newCommentFolder = contentRepository.GetDefault<ContentFolder>(rootFolderReference);
+
+            newCommentFolder.Name = contentItemToComment.Name;
+            contentRepository.Save(newCommentFolder, EPiServer.DataAccess.SaveAction.Publish, EPiServer.Security.AccessLevel.Publish);
+
+            return newCommentFolder;
+        }
     }
 }
